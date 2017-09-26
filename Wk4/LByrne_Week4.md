@@ -2,7 +2,7 @@
 ##### DATA 620 - Web Analytics
 ##### Fall - 2017
 
-# Homework 3
+# Homework 4
 
 **Centrality measures can be used to predict (positive or negative) outcomes for a node.**
 
@@ -28,11 +28,11 @@ Let us say that we knew addresses, *Address A* for example, in which ransoms wer
 * We then call ```https://blockchain.info/block-height/[associated block heights of Address A]?format=json``` to view the transaction activity associated with each address in all its associated blocks.
 * This would be done repeatedly for all addresses associated with this address until a network is formed with any address that has a path to *Address A*
 * This network should be stored in some manner for analysis, e.g. a .csv file.
-* This network can be analyzed to find centralities in the network, namely *betweenness centrality* which quantifies the number of times a node acts as a bridge along the shortest path between two other nodes [^1].
+* This network can be analyzed to find centralities in the network, namely *betweenness centrality* which quantifies the number of times a node acts as a bridge along the shortest path between two other nodes<sup>1</sup>.
 
 By analyzing this network, one could find similar ransom transactions, central nodes that tie this network together and zero-sum addresses (addresses in which the sum of deposits and withdraws are zero). These things would lead to further understanding of a criminal network and key associated addresses within.
 
 ### *Reference and Inspiration*
 The inspiration for this assignment came from a [blogpost on DZone](https://dzone.com/articles/analyzing-bitcoin-network) by Michael Hunger calling out the work of David Fauth in analyzing the blockchain using Neo4j.
 
-[^1]: Wiki [Betweenness Centrality](https://en.wikipedia.org/wiki/Betweenness_centrality)
+<sup>1</sup>: Wiki [Betweenness Centrality](https://en.wikipedia.org/wiki/Betweenness_centrality)
