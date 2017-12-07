@@ -16,16 +16,17 @@ Moving forward, we will assume that **(1)** from above is how the markets react.
 
 ### Methods and Data Sources
 [![Twitter](https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Twitter_NEW.png)](https://twitter.com/)[![Coindesk](https://daks2k3a4ib2z.cloudfront.net/576d13c8eb5794cb5888fc50/59d232e085c6930001f4cb11_CoinDesk_WEB.png)](https://www.coindesk.com/price/)
+
 The general approach will be as follows:
 
  1) Extract historical Twitter ([TWTR](https://finance.google.com/finance?q=NYSE:TWTR)) data via the [Twitter API](https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html#DataEndpoint). Tweets mentioning Bitcoin (e.g. Bitcoin, BTC, #BTC) will be extracted from a given time period, time stamped and processed.
  2) Collect historical bitcoin decrease/increase percentages over same timeline. [Coindesk](https://www.coindesk.com/price) has historical pricing (date, time, open, high, low and close) over 15-minute intervals that will be exported to a csv.
  3) Offset the price differential by a fixed point in the future relative to when the tweet was made (e.g. the open/close differential for the day starting a half hour after the tweet was made).
-  a) If a classifier is being used, the price differentials will be stratified into groups (e.g. up/down or some percentage quantile).
+ ..a) If a classifier is being used, the price differentials will be stratified into groups (e.g. up/down or some percentage quantile).
  4) A combination of some or all of the following will be used:
- a) Analyze tweet sentiments (most likely via [VADER](https://github.com/cjhutto/vaderSentiment)) in relation to the future price differential in order to explore sentiment and market prices.
- b) Construct a document term matrix then feature extract common words. Using a classifier, e.g. Naive Bayes, analyze most important features in relation to price prediction.
- c) Split data into testing and training sets and use some method f machine learning to see how any of the above (**a** or **b**) perform.
+ ..a) Analyze tweet sentiments (most likely via [VADER](https://github.com/cjhutto/vaderSentiment)) in relation to the future price differential in order to explore sentiment and market prices.
+ ..b) Construct a document term matrix then feature extract common words. Using a classifier, e.g. Naive Bayes, analyze most important features in relation to price prediction.
+ ..c) Split data into testing and training sets and use some method f machine learning to see how any of the above (**a** or **b**) perform.
 
 ### Foreseen Problems
 **Data Collection**
