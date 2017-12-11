@@ -1,39 +1,78 @@
-[![N|Solid](https://sps.cuny.edu/sites/all/themes/cuny/assets/img/header_logo.png)](https://sps.cuny.edu/academics/graduate/master-science-data-science-ms)
+[![CUNY_SPS](https://sps.cuny.edu/sites/all/themes/cuny/assets/img/header_logo.png)](https://sps.cuny.edu/academics/graduate/master-science-data-science-ms)
 
 ## Final Project Proposal for DATA 620 - Web Analytics (Fall 2017)
-##### Liam Byrne
-##### Dmitriy Vecheruk
+
+#### Liam Byrne
+#### Dmitriy Vecheruk
+
 ***
+
 ## Cryptocurrency Price Evaluation and Natural Language Processing
+
 ### Motivation and Hypothesis
-The value of cryptocurrencies, mainly Bitcoin ([BTC](https://coinmarketcap.com/currencies/bitcoin/)), have been extremely volatile since their inception. This volatility is spurred by speculation, future use cases and most importantly by rumor and sentiment. It would be an interesting use case of Natural Language Processing (NLP) to see how the cryptocurrency markets respond to news, rumor and overall sentiment; let's encapsulate everything into sentiment for the sake of clarity. The result could be a gradation of the following:
+
+The value of cryptocurrencies, mainly Bitcoin ([BTC](https://coinmarketcap.com/currencies/bitcoin/)), have been extremely volatile since their inception. This volatility is spurred by speculation, future use cases and possibly by rumor and general sentiment. It would be an interesting use case of Natural Language Processing (NLP) to see how the cryptocurrency markets respond to news, rumor and overall sentiment; let's encapsulate all of these into sentiment for the sake of clarity. The result could be a gradation of the following:
 
 1. Markets react to sentiment - *possible to capitalize on*
 2. Sentiment is a reaction to the markets - *no use to capitalize on*
 3. There is no correlation to either - *no use to capitalize on*
 
-Moving forward, we will assume that **(1)** from above is how the markets react. We will analyze word usage and sentiment and construct a model that can forecast future pricing. Since Bitcoin is the most popular and most valued cryptocurrency by market cap, it will be used as the proof of concept. The following will outline our tentative data sources, methods and problems foreseen in creating a model.
+Moving forward, we will assume that **(1)** from above is how the markets react. The following will outline our problem statement, our tentative data sources and methods of creating a model.
 
-### Methods and Data Sources
-[![Twitter](https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Twitter_NEW.png)](https://twitter.com/)[![Coindesk](https://daks2k3a4ib2z.cloudfront.net/576d13c8eb5794cb5888fc50/59d232e085c6930001f4cb11_CoinDesk_WEB.png)](https://www.coindesk.com/price/)
+### Business Understanding
 
-The general approach will be as follows:
+For better or worse, social media has taken on the roles of a news source, an ever-present soap-box and a tool to influence markets. Utilizing social media data could allow for a better understanding of the future market behavior. Picking a time to change one's position in the market has been described, analogously, to catching a falling knife for buying in or timing a swinging guillotine for selling. Being able to predict this timing better than the competition using the medium of social media could allow for larger monetary gains than the competition.
 
-1. Extract historical Twitter ([TWTR](https://finance.google.com/finance?q=NYSE:TWTR)) data via the [Twitter API](https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html#DataEndpoint). Tweets mentioning Bitcoin (e.g. Bitcoin, BTC, #BTC) will be extracted from a given time period, time stamped and processed.
-2. Collect historical bitcoin decrease/increase percentages over same timeline. [Coindesk](https://www.coindesk.com/price) has historical pricing (date, time, open, high, low and close) over 15-minute intervals that will be exported to a csv.
-3. Offset the price differential by a fixed point in the future relative to when the tweet was made (e.g. the open/close differential for the day starting a half hour after the tweet was made).
-    - a. If a classifier is being used, the price differentials will be stratified into groups (e.g. up/down or some percentage quantile).
-4. A combination of some or all of the following will be used:
-    - a. Analyze tweet sentiments (most likely via [VADER](https://github.com/cjhutto/vaderSentiment)) in relation to the future price differential in order to explore sentiment and market prices.
-    - b. Construct a document term matrix then feature extract common words. Using a classifier, e.g. Naïve Bayes, analyze most important features in relation to price prediction.
-    - c. Split data into testing and training sets and use some method f machine learning to see how any of the above (**a** or **b**) perform.
+In order to explore news headlines and opinions about cryptocurrency and make a comparison to the trading price, we need to mine and aggregate social media data over a set time line (**Liam**) and then compare this information to the trading price (**Dmitriy**). We will analyze word usage and sentiment to construct a model in an attempt to forecast future pricing. Since Bitcoin is the most popular and the most valued cryptocurrency by market cap, it will be used as the proof of concept.
 
-### Foreseen Problems
-**Data Collection**
-The free (premium) version of the Twitter Search API only allows for searching up to thirty (30) days back in time for historical (non-streaming) tweets. In addition, the API has a rate limit that can easily be exceeded if careful attention is not paid to it. Python has tools to slow requests to not exceed a set limit. If the API is really troublesome or the data within the 30-day envelope is not conclusive (possible with the ~100% jump in price in the last 30 days as of the writing of this), there are Python packages that bypass the API (e.g. the [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python) that will be explored if the "orthodox" avenue of data collection is not working.
+### Data Understanding
+<p align="center">
+  <img width="240" height="240" src="https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Twitter_NEW.png">
+</p>
 
-**Useful Data (avoiding GIGO)**
-Exploring key historical points (e.g. periods of exchange hacks or government intervention) in Bitcoin's timeline may be necessary to train a better model, analyze key phrases in tweets or get more varied sentiment
+The social media platform that will be mined is Twitter ([TWTR](https://finance.google.com/finance?q=NYSE:TWTR)) due to its large user base and its concise, 140 word limit. Historical Twitter data will be collected via the [Twitter API](https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html#DataEndpoint) or by the Python package [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python). Tweets mentioning Bitcoin (e.g. Bitcoin, #BTC, Satoshi) will be extracted from a given time period along with the tweet's time stamp. A initial exploration of word frequency will be explored. In addition, any oddities with the tweet data will try to be explored (e.g. if slang is predominately used,  do tweets appear to be from bots) ***(Liam)***
 
-### Planned Outcome
-At the very least, we will incorporate a lot of what we learned over the course of the semester to create something with a real-world use case. Even if our original hypothesis is wrong, i.e. sentiment is **not** a driving force behind cryptocurrency pricing), we believe that the exercise involved in reaching this conclusion will still utilize most skills garnered in the class and could be adaptable to other real-world applications of natural language processing.
+<p align="center">
+  <img width="450" height="87" src="https://surveymonkey-assets.s3.amazonaws.com/survey/119070839/4b34c3c6-a1e4-4fa1-b045-fffed5a1c6f9.png">
+</p>
+
+Historical bitcoin decrease/increase percentages over same timeline as above from [Coindesk](https://www.coindesk.com/price), which has historical pricing (date, time, open, high, low and close) over 15-minute intervals that will exported to a csv. The data will be observed to observe the format of time stamps and possible erroneous data. ***(Dmitriy)***
+
+### Data Preparation
+
+ The raw data from the tweets will need to be cleaned of erroneous Twitter data and stop words. The resulting cleaned data will be stored in a list tuple consisting of the tweet and the time stamp of the end of the yet to be defined interval. (**Liam**) Sentiment analysis (via [VADER](https://github.com/cjhutto/vaderSentiment)) for the tweet will be analyzed and the compound sentiment score will be appended to the respective tuple. (**Dmitriy**)
+
+ The trading price of BTC will categorized in one of the following manners:
+
+ 1. A method to produce a dependent categorical variable **Up** if the end-of-day closing price is above the opening price when the tweet was made. The method will be able to handle if the opposite happens, assigning a **Down** categorical dependent variable. (**Dmitriy**)
+
+ 2. A method to build a quantile set of features (e.g.: +0% - +5%, 5% - 10%, etc.) for the open/close differential after the tweet was made. (**Dmitriy**)
+
+ For both of the above, the features will be stored in a list of tuples with the resultant categorical variable and the opening time. (**Dmitriy**)
+
+The above Collection will be merged via a shared time stamp. This result in a list of tuples containing the tweets, the time stamp and the categorical dependent variable (**Dmitriy and Liam**)
+
+### Modelling
+
+Prior to choosing a model to use, data exploration will be used to look at word frequencies relative to the trading price (**Liam**) and the sentiment score relative to the trading price (**Dmitriy**) to see if any patterns are evident before we commit to the choice of model. Features may be added or subtracted as necessary depending on this data exploration phase. (**Liam and Dmitriy**)
+
+The resulting feature set, which includes:
+1. High frequency words
+2. Sentiment score
+3. Categorized dependent variable
+will be split (tentative 20% hold-out) and trained on up to two classifiers, naïve Bayes and random forest. (**Liam and Dmitriy**)
+
+### Evaluation
+
+The resultant accuracy and F-1 score of the model(s) will evaluated. (**Liam and Dmitriy**) If the results are not marginally better than a coin flip, we will need to go back to the beginning of the modeling phase and try again.
+
+If you torture data enough, it will speak, but we do not wish to get to level beyond water boarding, i.e., we are more concerned with seeing if there is a clear and relevant correlation between sentiment and trading price and if there isn't - explore reasons why our hypothesis is not correct.
+
+### Deployment
+
+Win or lose, we will summarize our findings in plots, tables or reports, so that our findings are consumable to a possible client. (**Liam and Dmitriy**)
+
+This final stage of the project will plan on showing that the team understood the scope of NLP covered over the course of the semester and was able to apply the learned techniques into a real-world use case. Even if our original hypothesis is wrong, i.e. sentiment is **not** a driving force behind cryptocurrency pricing), we believe that the exercise involved in reaching this conclusion will still show the understanding of the material covered and possible issues faced from the natural language processing process.
+
+### References
+<sup>[1]</sup> Cross-industry standard process for Data Mining (CRISP-DM). [https://www.wikiwand.com/en/Cross-industry_standard_process_for_data_mining](https://www.wikiwand.com/en/Cross-industry_standard_process_for_data_mining)
