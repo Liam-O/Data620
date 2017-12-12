@@ -30,13 +30,13 @@ In order to explore news headlines and opinions about cryptocurrency and make a 
   <img width="240" height="240" src="https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Twitter_NEW.png">
 </p>
 
-The social media platform that will be mined is Twitter ([TWTR](https://finance.google.com/finance?q=NYSE:TWTR)) due to its large user base and its concise, 140 word limit. Historical Twitter data will be collected via the [Twitter API](https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html#DataEndpoint) or by the Python package [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python). Tweets mentioning Bitcoin (e.g. Bitcoin, #BTC, Satoshi) will be extracted from a given time period along with the tweet's time stamp. An initial exploration of word frequency will be explored. In addition, any oddities with the tweet data will try to be identified (e.g. if slang is predominately used,  do tweets appear to be from bots, etc.) ***(Liam)***.
+The social media platform that will be mined is Twitter ([TWTR](https://finance.google.com/finance?q=NYSE:TWTR)) due to its large user base and its concise, 140 word limit. Historical Twitter data will be collected via the [Twitter API](https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html#DataEndpoint) or by the Python package [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python). Tweets mentioning Bitcoin (e.g. Bitcoin, #BTC, Satoshi) will be extracted from a given time period along with the tweet's time stamp. An initial exploration of word frequency will be explored. In addition, any oddities with the tweet data will try to be identified (e.g. if slang is predominately used,  do tweets appear to be from bots, etc.) (**Liam**).
 
 <p align="center">
   <img width="450" height="87" src="https://surveymonkey-assets.s3.amazonaws.com/survey/119070839/4b34c3c6-a1e4-4fa1-b045-fffed5a1c6f9.png">
 </p>
 
-Historical bitcoin decrease/increase percentages over the same timeline as above will be gathered from [CoinDesk](https://www.coindesk.com/price), which has historical pricing (date, time, open, high, low and close) over 15-minute intervals that can be exported to a csv, or [CoinDesk's API](https://www.coindesk.com/api/) from which historical prices can be requested. The data will be observed to note the format of time stamps and possible erroneous data ***(Dmitriy)***.
+Historical bitcoin decrease/increase percentages over the same timeline as above will be gathered from [CoinDesk](https://www.coindesk.com/price), which has historical pricing (date, time, open, high, low and close) over 15-minute intervals that can be exported to a csv, or [CoinDesk's API](https://www.coindesk.com/api/) from which historical prices can be requested. The data will be observed to note the format of time stamps and possible erroneous data (**Dmitriy**).
 
 ### Data Preparation
 
